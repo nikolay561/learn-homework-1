@@ -15,13 +15,26 @@
     
 """
 
-questions_and_answers = {}
+questions_and_answers = {'как дела?': 'Хорошо.',
+                         'что делаешь?': 'Программирую.',
+                         'как тебе погода?': 'Хорошая!',
+                         'где ты живешь?': 'В Москве.',
+                         }
+
 
 def ask_user(answers_dict):
     """
     Замените pass на ваш код
     """
-    pass
+
+    while True:
+        answers_dict = input('Задайте мне вопрос (нажмите "q" для выхода):').lower()
+        if answers_dict in questions_and_answers:
+            print(questions_and_answers[answers_dict])
+        elif answers_dict == 'q':
+            print('\nПока!')
+            break
+
     
 if __name__ == "__main__":
     ask_user(questions_and_answers)
