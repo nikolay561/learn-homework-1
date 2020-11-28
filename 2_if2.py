@@ -14,7 +14,15 @@
   и выводя на экран результаты
 
 """
-
+def helper(user_str_1, user_str_2):
+    if not isinstance(user_str_1, str) or not isinstance(user_str_2, str):
+        return 0
+    elif user_str_1 == user_str_2:
+        return 1
+    elif len(user_str_1) > len(user_str_2):
+        return 2
+    elif user_str_2 == 'learn':
+        return 3
 
 def main():
     """
@@ -23,18 +31,12 @@ def main():
     """
     user_str_1 = input('Введите первую строку: ')
     user_str_2 = input('Введите вторую строку: ')
+    print(helper(user_str_1, user_str_2))
 
-    if isinstance(user_str_1, int) or isinstance(user_str_2, int):
-        print(0)
-    elif user_str_1 == user_str_2:
-        print(1)
-    elif user_str_1 != user_str_2 and len(user_str_1) > len(user_str_2):
-        print(2)
-    elif user_str_1 != user_str_2 and user_str_2 == 'learn':
-        print(3)
+    helper('learn', 23)
+
 
 
 if __name__ == "__main__":
     main()
-    main()
-    main()
+

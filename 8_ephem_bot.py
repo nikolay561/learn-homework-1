@@ -31,8 +31,15 @@ def talk_to_me(update, context):
     update.message.reply_text(user_text)
 
 def planet(update, context):
-
-    pass
+    user_planet = update.message.text.split()
+    user_planet = user_planet[1].lower()
+    if user_planet == 'jupiter' :
+      result = ephem.Jupiter(ephem.now())
+      update.message.reply_text(f'Юпитер находится в созвездии {ephem.constellation(result)}')
+    elif user_planet == 'saturn':
+      result = ephem.Saturn(ephem.now())
+      update.message.reply_text (f'Сатурн находится в созвездии {ephem.constellation(result)}')
+    
 
 
 def main():
@@ -40,8 +47,9 @@ def main():
 
     dp = mybot.dispatcher
     dp.add_handler(CommandHandler('start', greet_user))
+    dp.add_handler(CommandHandler('planet', planet))
     dp.add_handler(MessageHandler(Filters.text, talk_to_me))
-    dp.add_handler(CommandHandler("planet", planet))
+    
 
     logging.info('Бот стартовал')
     mybot.start_polling()
